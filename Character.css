@@ -1,0 +1,146 @@
+header{ 
+	    background-color:#8B92BC;
+		background-image: url("images/SSB64.png");
+		background-position: right;
+		font-family: Verdana, Arial, sans-seriff; 
+		background-repeat: no-repeat;
+   		margin-top: 0;
+		height: 150px;
+}
+body{ 
+	  background-color:#CED2ED;
+	  font-family: Verdana, Arial, sans-seriff; 
+} 
+main{ 
+	  padding-top:0;
+	  background-color:#dadde7;
+	  padding-left:5em;
+	  padding-right:5em;
+	  padding-bottom:3em;
+	  display:block;
+	  margin-left: 170px;
+}
+footer{ 
+		background-color:#8B92BC;
+        font-size: small;
+        font-style: italic;
+        text-align: center;
+        padding: 1em;
+        margin-bottom: 0;
+}
+nav{
+	background-color:#2f3538;
+	padding: 0em;
+	padding-left:6em;
+	padding-right:6em;
+	float: left;
+	width: 140px;
+	font-weight: bold;
+	text-align: center;
+}
+nav a{ 
+	   display: block;
+	   text-align: center;
+	   font-weight: bold;
+	   text-decoration: none;
+	   border 3px outset #CCCCCC;
+	   padding: 1em;
+	   padding-right:0em;
+	   padding-left:0em;
+	   margin-bottom: 1em;
+}
+nav ul{ 
+		list-style-image:url("images/icon_copy_copy.png");
+		padding: 0em;
+		padding-left:0em;
+		padding-right:0em;
+		font-size: 1.2em;
+}
+nav a:visited{
+	color: #497777; 
+	}
+nav a:hover{
+	border: #333333;
+	border:3px;
+	color: #A26100;
+}
+h1{
+	padding-top:50px;
+	padding-left:2em;
+}
+#wrapper{
+		width: 80%;
+		margin-left:auto; 
+		margin-right:auto;
+		color: #3F2860;
+		background-color:#F5F5F5;
+		min-width: 550px; 
+		max-width: 1280px;
+	}
+.clear{
+clear:both;
+}
+.floatleft{
+	float:left;
+	margin-right:4em;
+	}
+.clear{
+clear:both;
+	}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border: 5px solid #3F2860;
+}
+.card {
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 20%;
+  height:20%;
+}
+.card__img {
+  display: block;
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.modal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100;
+	height: 100;
+	overflow: auto;
+	background-color: #8B92BC;
+}
+.modal-content{
+	background-color: #FEFEFE;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+.close{
+	color: #aaa;
+	float: left;
+	font-size: 28px;
+	font-weight: bold;
+}
+.next{
+	color: #0000FF;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
