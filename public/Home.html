@@ -146,6 +146,22 @@
                     }
                 }
             }
+	    //Modal function 
+	async function showCharacterModal(character) {
+       		 const modal = document.getElementById("characterDetailsModal");
+        	 const modalName = modal.querySelector("#characterName");
+        	const modalImage = modal.querySelector("#characterImage");
+       		 const modalDescription = modal.querySelector("#characterSummary");
+	
+        modalName.textContent = character.name;
+        modalImage.src = character.image;
+        modalImage.alt = `Picture of ${character.name}`;
+        modalSummary.textContent = character.summary;
+
+        // Show the modal
+        $(modal).modal("show");
+    }
+
 
             // Main function
             (async function main() {
@@ -156,11 +172,25 @@
                     for (let character of characters) {
                         character.favorite = await fetchFavoriteStatus(character);
                     }
-
+ 
                     const characterCards = characters.map(createCharacterCard);
                     mainElement.innerHTML = characterCards.join("");
 
-                    mainElement.addEventListener("click", toggleFavoriteStatus);
+                mainElement.addEventListener("click", toggleFavoriteStatus);]
+		//Card Event 
+		mainElement.addEventListener("click", function (event) {
+                // Check if a card element was clicked
+               	 const card = event.target.closest(".card");
+               	 if (card) {
+                    // Find the corresponding character data
+                    const character = characters.find(
+                        (char) => char.name === card.querySelector(".card-title").textContent
+                    );
+
+                    // Show the modal with the character details
+                    showCharacterModal(character);
+               	 }
+	       });	
                 } catch (error) {
                     console.error("Error:", error);
                 }
