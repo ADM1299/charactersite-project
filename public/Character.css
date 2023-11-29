@@ -1,15 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 header{ 
 	    background-color:#8B92BC;
 		background-image: url("images/SSB64.png");
 		background-position: right;
-		font-family: Verdana, Arial, sans-seriff; 
+		font-family: 'Press Start 2P', cursive; 
 		background-repeat: no-repeat;
    		margin-top: 0;
 		height: 150px;
 }
+
+body, html {
+	height: 100%;
+	margin: 0;
+	padding:0;
+	overflow-x: hidden;
+}
+
 body{ 
-	  background-color:#CED2ED;
-	  font-family: Verdana, Arial, sans-seriff; 
+	  background: url('Body_Background.png');
+	  background-size: cover;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  font-family: 'Press Start 2P', cursive; 
 } 
 main{ 
 	  padding-top:0;
@@ -29,53 +42,35 @@ footer{
         margin-bottom: 0;
 }
 nav{
-	background-color:#2f3538;
-	padding: 0em;
-	padding-left:6em;
-	padding-right:6em;
-	float: left;
-	width: 140px;
-	font-weight: bold;
-	text-align: center;
+	background-color: rgba(0, 0, 0, 0.5);
 }
-nav a{ 
-	   display: block;
-	   text-align: center;
-	   font-weight: bold;
-	   text-decoration: none;
-	   border: 3px outset #CCCCCC;
-	   padding: 1em;
-	   padding-right:0em;
-	   padding-left:0em;
-	   margin-bottom: 1em;
+
+
+nav ul li a {
+	list-style-image:url("images/icon_copy_copy.png");
+	display: block;
+	align-items: left;
+	padding: 10px;
+	color: #ddd;
+	text-decoration: none;
+	font-family: 'Press Start 2P', monospace;
+	border: 2px solid transparent;
+	transition: color 0.2s ease-in-out;
 }
-nav ul{ 
-		list-style-image:url("images/icon_copy_copy.png");
-		padding: 0em;
-		padding-left:0em;
-		padding-right:0em;
-		font-size: 1.2em;
+
+nav ul li a:hover,
+nav ul li a:focus {
+	background: rgba(255, 255, 255, 0.2);
+	cursor: pointer;
 }
-nav a:visited{
-	color: #497777; 
-	}
-nav a:hover{
-	border: #333333;
-	border:3px;
-	color: #A26100;
-}
+	
 h1{
 	padding-top:50px;
 	padding-left:2em;
 }
 #wrapper{
-		width: 80%;
-		margin-left:auto; 
-		margin-right:auto;
-		color: #3F2860;
-		background-color:#F5F5F5;
-		min-width: 550px; 
-		max-width: 1280px;
+		background: transparent;
+		border: none;
 	}
 .clear{
 clear:both;
@@ -96,23 +91,27 @@ clear:both;
 }
 .card {
   display: inline-block;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+  border: 2px solid #333;
+  box-shadow: 2px 2px 110px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
   width: 20%;
   height:20%;
+  margin:20px;
 }
 .card__img {
-  display: block;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
   height: 18rem;
-  object-fit: cover;
+  object-fit: fill;
 }
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transform: translateY(-5px);
 }
 
 .container {
-  padding: 2px 16px;
+  padding: 20px;
 }
 .modal{
 	display: none;
@@ -126,11 +125,8 @@ clear:both;
 	background-color: #8B92BC;
 }
 .modal-content{
-	background-color: #FEFEFE;
-	margin: 15% auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 80%;
+	background: rgba(0, 0, 0, 0.7);
+	border: 2px solid #fff;
 }
 .close{
 	color: #aaa;
