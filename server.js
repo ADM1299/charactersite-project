@@ -12,31 +12,50 @@ const characters = [
         description: 'Part Time Plumber',
         image: 'images/Mario.jpg',
         //Implement boolean to track for if character is set as favorite
-        isFavorite: false
+        isFavorite: false,
+        summary:'First Appearance: '1983 -'
+        'Series: Mario'
+        'A famous plumber from the Mushroom Kingdom.' 
+        'He is known for saving Princess Peach from the evil lord Bowser.'
     },
     {
         name:'Pikachu',
         description: 'Electric Mouse Pokemon',
         image: 'images/Pikachu.jpg',
-        isFavorite: false
+        isFavorite: false,
+        summary: 'First Appearance: '1996 -'
+        'Series: Pokemon'
+        'The electric mouse Pokemon and the mascot of the Pokemon series.'
+        'Know for their powerful electric moves like Thunder Jolt and Thunder.'
     },
     {
         name: 'Fox',
         description: 'Superstar Pilot',
         image: 'images/Fox.jpg',
-        isFavorite: false
+        isFavorite: false,
+        summary: 'First Appearance: '1993-'
+        'Series: StarFox'
+        'Fox McCloud is the leader of the space mercenaries StarFox.'
+        'He is a young ace pilot with a strong sense of justice.' 
     },
     {
         name: 'Samus',
         description: 'Intergalactic Bounty Hunter',
         image: 'images/Samus.jpg',
-        isFavorite: false
+        isFavorite: false,
+        summary: 'First Appearance: '1986-'
+        'Series: Metroid'
+        'Samus Aran is a famous galactic bounty hunter feared across the galaxy.'
+        'She battles countless foes ranging from Space pirates to the dreaded Metroid.'  
     },
     {
         name: 'Captain Falcon',
         description: 'Part Time Bounty Hunter/Racer',
         image: 'images/Captain_Falcon.jpg',
-        isFavorite: false
+        isFavorite: false,
+        summary: 'First Appearance: '1990-'
+        'Series: F-Zero'
+        'A mysterious person known as the best racer in F-Zero and a renowned bounty hunter.' 
     },
 ];
 
