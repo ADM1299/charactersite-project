@@ -125,19 +125,7 @@
         </div>
     `;
             }
-	// Add event listener for card clicks
-            main.addEventListener("click", (event) => {
-                const card = event.target.closest(".card");
-                if (card) {
-                    const character = characters.find((c) => c.name === card.querySelector(".card-title").textContent);
-                    const modalHtml = createModal(character);
-                    main.insertAdjacentHTML("beforeend", modalHtml);
-
-                    // Show the modal
-                    const modal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
-                    modal.show();
-                }
-            });
+	
 	//Creates Modal 
 	function createModal(character){
 		return `
