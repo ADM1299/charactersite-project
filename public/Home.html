@@ -141,23 +141,6 @@
 		`;
 	}
 
-	//event listners for cards
-	async function clickOnCard(event){
-		const card = event.target.closest(".card");
-   	 if (card) {
-       		 const character = characters.find((c) => c.name === card.querySelector(".card-title").textContent);
-      		  showModal(character);
-   		 }
-	});
-
-	function showModal(character) {
-  	  const modalHtml = createModal(character);
-   	 document.body.insertAdjacentHTML("beforeend", modalHtml);
-
-    	// Show the modal
-   	 const modal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
-   	 modal.show();
-	}
 
             // Toggles favorite status for a character
             async function toggleFavoriteStatus(event) {
@@ -200,8 +183,6 @@
                     mainElement.innerHTML = characterCards.join("");
 
                 mainElement.addEventListener("click", toggleFavoriteStatus);
-		//Modal elements
-		mainElement.addEventListener("click", clickOnCard);
                 } catch (error) {
                     console.error("Error:", error);
                 }
