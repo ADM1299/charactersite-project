@@ -169,21 +169,6 @@
 
                 mainElement.addEventListener("click", toggleFavoriteStatus);
 		//Modal elements
-		 mainElement.addEventListener("click", function (event) {
-            if (event.target.closest(".clickable-card")) {
-                const characterData = JSON.parse(event.target.closest(".clickable-card").getAttribute("data-character"));
-                const modalHtml = createModal(characterData);
-
-                // Remove any existing modals
-                document.querySelectorAll(".modal").forEach(modal => modal.remove());
-
-                // Append the new modal to the body
-                document.body.insertAdjacentHTML("beforeend", modalHtml);
-
-                // Show the modal
-                $('#characterDetailsModal').modal('show');
-            }
-        });
                 } catch (error) {
                     console.error("Error:", error);
                 }
