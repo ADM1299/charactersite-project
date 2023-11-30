@@ -66,7 +66,38 @@
                     });
                 });
 
-		
+		fetch("/api/characters").then((response) => response.json()) .then((characters) =>{
+		const modalHTML = `
+   		<div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="characterDetailsModalLabel">
+                                    Character Details
+                                </h5>
+                                <span aria-hidden="true">
+                                    &times;
+                                </span>
+                            </div>
+                            <div class="modal-body">
+                                <h2 id="characterName">${character.name}</h2>
+                                <img id="${character.image}" class="img-fluid" alt="Picture of ${character.name}" />
+                                <p id="characterDescription">${character.summary}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-default btn-next">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+		main.insertAdjacentHTML += modalHTML;
+		  });
+                });
 
             // Fetches character data from API
             async function fetchCharacters() {
@@ -94,6 +125,19 @@
         </div>
     `;
             }
+	// Add event listener for card clicks
+            main.addEventListener("click", (event) => {
+                const card = event.target.closest(".card");
+                if (card) {
+                    const character = characters.find((c) => c.name === card.querySelector(".card-title").textContent);
+                    const modalHtml = createModal(character);
+                    main.insertAdjacentHTML("beforeend", modalHtml);
+
+                    // Show the modal
+                    const modal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
+                    modal.show();
+                }
+            });
 	//Creates Modal 
 	function createModal(character){
 		return `
@@ -153,9 +197,7 @@
                     }
                 }
             }
-	    //Modal function 
-
-
+		
             // Main function
             (async function main() {
                 try {
