@@ -155,26 +155,6 @@
 		`;
 	}
 
-	// Add an event listener for card clicks
-        main.addEventListener("click", (event) => {
-                const card = event.target.closest(".card");
-                if (card) {
-                    const character = characters.find((c) => c.name === card.querySelector(".card-title").textContent);
-                    showCharacterDetails(character);
-                }
-            });
-        });
-
-	 // Function to show character details in the modal
-        function showCharacterDetails(character) {
-            const modalHtml = createModal(character);
-            document.body.insertAdjacentHTML("beforeend", modalHtml);
-
-            // Show the modal
-            const modal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
-            modal.show();
-	});
-
             // Toggles favorite status for a character
             async function toggleFavoriteStatus(event) {
                 if (event.target.matches(".favorite-button")) {
