@@ -155,6 +155,28 @@
 		`;
 	}
 
+	  //Modal and Card click on action
+	function openCharacterModal(character) {
+            const modalHTML = createModal(character);
+            const modalContainer = document.getElementById("modal-content");
+            modalContainer.innerHTML = modalHTML;
+
+            // Initialize the modal using Bootstrap
+            const characterModal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
+            characterModal.show();
+        }
+
+        // Function to close the modal
+        function closeCharacterModal() {
+            const characterModal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
+            characterModal.hide();
+        }
+
+        // Event listener for card clicks
+        function handleCardClick(character) {
+            openCharacterModal(character);
+        }
+
             // Toggles favorite status for a character
             async function toggleFavoriteStatus(event) {
                 if (event.target.matches(".favorite-button")) {
