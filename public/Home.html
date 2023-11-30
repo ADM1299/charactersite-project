@@ -63,7 +63,7 @@
 							</div>
 						`;
 			const modalHTML = `
-   					 <div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
+   		<div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -125,17 +125,6 @@
 	//Creates Modal 
 	function createModal(character){
 		return `
-                  <div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="characterDetailsModalLabel">
-                                    Character Details
-                                </h5>
-                                <span aria-hidden="true">
-                                    &times;
-                                </span>
-                            </div>
                             <div class="modal-body">
                                 <h2 id="characterName">${character.name}</h2>
                                 <img id="${character.image}" class="img-fluid" alt="Picture of ${character.name}" />
@@ -149,33 +138,26 @@
                                     Next
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                </div>
 		`;
 	}
 
-	  //Modal and Card click on action
-	function openCharacterModal(character) {
-            const modalHTML = createModal(character);
-            const modalContainer = document.getElementById("modal-content");
-            modalContainer.innerHTML = modalHTML;
+	//event listners for cards
+	async function clickOnCard(event){
+		const card = event.target.closest(".card");
+   	 if (card) {
+       		 const character = characters.find((c) => c.name === card.querySelector(".card-title").textContent);
+      		  showModal(character);
+   		 }
+	});
 
-            // Initialize the modal using Bootstrap
-            const characterModal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
-            characterModal.show();
-        }
+	function showModal(character) {
+  	  const modalHtml = createModal(character);
+   	 document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-        // Function to close the modal
-        function closeCharacterModal() {
-            const characterModal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
-            characterModal.hide();
-        }
-
-        // Event listener for card clicks
-        function handleCardClick(character) {
-            openCharacterModal(character);
-        }
+    	// Show the modal
+   	 const modal = new bootstrap.Modal(document.getElementById('characterDetailsModal'));
+   	 modal.show();
+	}
 
             // Toggles favorite status for a character
             async function toggleFavoriteStatus(event) {
@@ -219,6 +201,7 @@
 
                 mainElement.addEventListener("click", toggleFavoriteStatus);
 		//Modal elements
+		mainElement.addEventListener("click", clickOnCard);
                 } catch (error) {
                     console.error("Error:", error);
                 }
