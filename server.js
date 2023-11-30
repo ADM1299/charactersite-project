@@ -44,7 +44,7 @@ const characters = [
         image: 'images/Samus.jpg',
         isFavorite: false,
         summary: 'First Appearance: 1986
-        Franchise: Metroid'
+        Franchise: Metroid
         Samus Aran is a famous galactic bounty hunter feared across the galaxy.
         She battles countless foes ranging from Space pirates to the dreaded Metroid.'  
     },
