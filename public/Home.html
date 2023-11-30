@@ -32,37 +32,10 @@
                 </ul>
             </nav>
             <main>
-                <div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="characterDetailsModalLabel">
-                                    Character Details
-                                </h5>
-                                <span aria-hidden="true">
-                                    &times;
-                                </span>
-                            </div>
-                            <div class="modal-body">
-                                <h2 id="characterName"></h2>
-                                <img id="characterImage" class="img-fluid" alt="Character Full Image" />
-                                <p id="characterDescription"></p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-default btn-next">
-                                    Next
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </main>
             <footer>
                 Copyright &copy;Distributed Web Design 2023
-                <br />
+                <br/>
                 <a href="mailto:Sa12499@georgiasouthern.edu">
                     Samuel_Adeniyi
                 </a>
@@ -109,16 +82,48 @@
             // Creates HTML for a character card
             function createCharacterCard(character) {
                 return `
-        	<div class="card">
+        <div class="card clickable-card" data-toggle="modal" data-target="#characterDetailsModal" data-character='${JSON.stringify(character)}'>
             <img class="card__img" src="${character.image}" alt="Picture of ${character.name}">
             <div class="card-body">
                 <h5 class="card-title">${character.name}</h5>
                 <p class="card-text">${character.description}</p>
-                <button class="favorite-button ${character.favorite ? "favorite" : ""}">${character.favorite ? "Remove from favorites" : "Add to favorites"}</button>
+                <button class="favorite-button ${character.favorite ? "favorite" : ""}">${character.favorite ? "Remove from favorites": "Add to favorites"}</button>
             </div>
         </div>
     `;
             }
+	//Creates Modal 
+	function createModal(character){
+		return `
+                  <div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="characterDetailsModalLabel">
+                                    Character Details
+                                </h5>
+                                <span aria-hidden="true">
+                                    &times;
+                                </span>
+                            </div>
+                            <div class="modal-body">
+                                <h2 id="characterName">${character.name}</h2>
+                                <img id="${character.image}" class="img-fluid" alt="Picture of ${character.name}" />
+                                <p id="characterDescription">${character.summary}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-default btn-next">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		`;
+	}
 
             // Toggles favorite status for a character
             async function toggleFavoriteStatus(event) {
@@ -162,7 +167,23 @@
                     const characterCards = characters.map(createCharacterCard);
                     mainElement.innerHTML = characterCards.join("");
 
-                mainElement.addEventListener("click", toggleFavoriteStatus);]
+                mainElement.addEventListener("click", toggleFavoriteStatus);
+		//Modal elements
+		 mainElement.addEventListener("click", function (event) {
+            if (event.target.closest(".clickable-card")) {
+                const characterData = JSON.parse(event.target.closest(".clickable-card").getAttribute("data-character"));
+                const modalHtml = createModal(characterData);
+
+                // Remove any existing modals
+                document.querySelectorAll(".modal").forEach(modal => modal.remove());
+
+                // Append the new modal to the body
+                document.body.insertAdjacentHTML("beforeend", modalHtml);
+
+                // Show the modal
+                $('#characterDetailsModal').modal('show');
+            }
+        });
                 } catch (error) {
                     console.error("Error:", error);
                 }
