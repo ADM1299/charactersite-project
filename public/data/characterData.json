@@ -22,7 +22,7 @@
         "url": "/fox",
         "name": "Fox",
         "description": "Superstar Pilot",
-        "image": "Fox.jpg",
+        "image": "images/Fox.jpg",
         "isFavorite": false,
         "summary": "First Appearance: 1993 \\n Franchise: StarFox \\n Fox McCloud is the leader of the space mercenaries StarFox. \\n He is a young ace pilot with a strong sense of justice."
     },
@@ -31,7 +31,7 @@
         "url": "/samus",
         "name": "Samus",
         "description": "Intergalactic Bounty Hunter",
-        "image": "../images/Samus.jpg",
+        "image": "images/Samus.jpg",
         "isFavorite": false,
         "summary": "First Appearance: 1986 \\n Franchise: Metroid \\n Samus Aran is a famous galactic bounty hunter feared across the galaxy. \\n She battles countless foes ranging from Space pirates to the dreaded Metroid."
     },
