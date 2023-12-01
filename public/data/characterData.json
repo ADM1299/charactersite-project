@@ -1,0 +1,48 @@
+[
+    {
+        "index": 0,
+        "url": "/mario",
+        "name": "Mario",
+        "description": "Part Time Plumber",
+        "image": "images/Mario.jpg",
+        "isFavorite": false,
+        "summary": "First Appearance: 1983 \\n Franchise: Mario \\n A famous plumber from the Mushroom Kingdom. \\n He is known for saving Princess Peach from the evil lord Bowser."
+    },
+    {
+        "index": 1,
+        "url": "/pikachu",
+        "name": "Pikachu",
+        "description": "Electric Mouse Pokemon",
+        "image": "images/Pikachu.jpg",
+        "isFavorite": false,
+        "summary": "First Appearance: 1996 \\n Franchise: Pokemon \\n The electric mouse Pokemon and the mascot of the Pokemon series. \\n Know for their powerful electric moves like Thunder Jolt and Thunder."
+    },
+    {
+        "index": 2,
+        "url": "/fox",
+        "name": "Fox",
+        "description": "Superstar Pilot",
+        "image": "Fox.jpg",
+        "isFavorite": false,
+        "summary": "First Appearance: 1993 \\n Franchise: StarFox \\n Fox McCloud is the leader of the space mercenaries StarFox. \\n He is a young ace pilot with a strong sense of justice."
+    },
+    {
+        "index": 3,
+        "url": "/samus",
+        "name": "Samus",
+        "description": "Intergalactic Bounty Hunter",
+        "image": "../images/Samus.jpg",
+        "isFavorite": false,
+        "summary": "First Appearance: 1986 \\n Franchise: Metroid \\n Samus Aran is a famous galactic bounty hunter feared across the galaxy. \\n She battles countless foes ranging from Space pirates to the dreaded Metroid."
+    },
+    {
+        "index": 4,
+        "url": "/falcon",
+        "name": "Captain Falcon",
+        "description": "Part Time Bounty Hunter/Racer",
+        "image": "images/Captain_Falcon.jpg",
+        "isFavorite": false,
+        "summary": "First Appearance: 1990 \\n Franchise: F-Zero \\n A mysterious person known as the best racer in F-Zero and a renowned bounty hunter."
+    }
+]
+
