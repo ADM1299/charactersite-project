@@ -13,7 +13,7 @@ app.use('/images', express.static('images'));
 app.use('/', publicRouter);
 
 
-const PORT  = process.env.PORT || 3050
+const PORT  = process.env.PORT || 3200
 app.listen(PORT,()=> console.info(`Server has started on ${PORT}`))
 
 
