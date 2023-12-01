@@ -9,7 +9,20 @@ class application {
     }
 
 
-    
+    renderCharacterPage() {
+        this.template = fs.readFileSync("./public/templates/character.html").toString();
+        let pageContent = '';
+        
+
+        
+        this.appData.forEach (item => {
+            pageContent += `<div><h1>${item.name}</h1><p>${item.description}</p><img src='${item.image}' width='300px' height='300px'/></div>`
+        });
+        
+        //Render Content Page Here
+        this.template = this.template.replace('*characters*', pageContent);
+    }
+
 
 
     renderApplicationPage() {
@@ -27,22 +40,7 @@ class application {
 
     }
 
-    renderCharacterPage() {
-        this.template = fs.readFileSync("./public/templates/character.html").toString();
-        let pageContent = '';
-        let item = '';
-        let nextItem = '';
-        
-
-        
-        this.appData.forEach (item => {
-            pageContent += `<div><h1>${item.name}</h1><p>${item.description}</p><img src='/Mario.jpg'/></div>`
-        });
-        
-        //Render Content Page Here
-        this.template = this.template.replace('*characters*', pageContent);
-    }
-
+    
     renderContentPage() {
         this.template = fs.readFileSync("./application/template/contentTemplate.html").toString(); // read in the /template/contentTemplate.html file.
         let pageContent = '';

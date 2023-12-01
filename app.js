@@ -7,6 +7,9 @@ var app = express();
 
 app.use(express.urlencoded({extended:true}));
 //app.use('/application/', applicationRouter);
+
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
 app.use('/', publicRouter);
 
 
