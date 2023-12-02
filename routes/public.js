@@ -23,7 +23,7 @@ router.get('/favorite', function(req, res, next) {
 
 router.get('/*', function(req, res, next) {
     appController = new applicationController(req);
-    html = appController.getCharacterPage(req);
+    html = appController.getFilterPage(req);
     res.send(html);
 });
 
