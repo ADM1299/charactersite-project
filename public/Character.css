@@ -121,11 +121,12 @@ footer {
     border: 2px solid #333;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
-	width: calc(20% - 40px);
+	width: calc(22% - 40px);
 	margin: 20px;
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
+	
 }
 
 .card__img {
@@ -138,7 +139,7 @@ footer {
 	margin: 0.5rem;
 	overflow: hidden;
 	white-space: normal;
-	text-overflow: clip;
+	text-wrap: pretty;
 }
 
 .card:hover {
