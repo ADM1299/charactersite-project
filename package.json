@@ -1,0 +1,26 @@
+{
+  "name": "charactersite_project",
+  "version": "1.0.0",
+  "description": "Project for designing a server-sided web page for characters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ADM1299/charactersite-project.git"
+  },
+  "keywords": [
+      "charactersite"
+  ],
+  "author": "Team_05",
+  "license": "ISC",
+  "bugs": {
+      "url": "https://github.com/ADM1299/charactersite-project/issues"
+  },
+  "homepage": "https://github.com/ADM1299/charactersite-project#readme",
+  "dependencies": {
+      "express": "^4.18.2"
+  }
+}

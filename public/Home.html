@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Character Site
+        </title>
+        <link rel="icon" type="staricon" href="images/star.png" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="Character.css" rel="stylesheet" />
+        <meta charset="utf-8" />
+        <script defer src=""></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1>
+                    Choose Your Character
+                </h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="Home.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Fav.html">
+                            Favorite(s)
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <main>
+            </main>
+            <footer>
+                Copyright &copy;Distributed Web Design 2023
+                <br/>
+                <a href="mailto:Sa12499@georgiasouthern.edu">
+                    Samuel_Adeniyi
+                </a>
+                <a href="mailto:al20877@georgiasouthern.edu">
+                    Aaron_Lee
+                </a>
+                <a href="mailto:am38948@georgiasouthern.edu">
+                    Alexander_May
+                </a>
+            </footer>
+        </div>
+        <script>
+            fetch("/api/characters")
+                .then((response) => response.json())
+                .then((characters) => {
+                    const main = document.querySelector("main");
+                    characters.forEach((character) => {
+                        const html = `
+							<div class="card">
+								<img class="card__img" src="${character.image}" alt="Picture of ${character.name}">
+								<div class="card-body">
+									<h5 class="card-title">${character.name}</h5>
+									<p class="card-text">${character.description}</p>
+								</div>
+							</div>
+						`;
+			const modalHTML = `
+   		<div class="modal fade" id="characterDetailsModal" tabindex="-1" role="dialog" aria-labelledby="characterDetailsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="characterDetailsModalLabel">
+                                    Character Details
+                                </h5>
+                                <span aria-hidden="true">
+                                    &times;
+                                </span>
+                            </div>
+                            <div class="modal-body">
+                                <h2 id="characterName">${character.name}</h2>
+                                <img id="${character.image}" class="img-fluid" alt="Picture of ${character.name}" />
+                                <p id="characterDescription">${character.summary}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-default btn-next">
+                                    Next
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+			main.innerHTML += modalHTML;
+                        main.innerHTML += html;
+                    });
+                });
+
+            // Fetches character data from API
+            async function fetchCharacters() {
+                const response = await fetch("/api/characters");
+                return await response.json();
+            }
+
+            // Fetches favorite status for a character
+            async function fetchFavoriteStatus(character) {
+                const response = await fetch(`/api/characters/${character.name}/favorite`);
+                const data = await response.json();
+                return data.favorite;
+            }
+
+            // Creates HTML for a character card
+            function createCharacterCard(character) {
+                return `
+        <div class="card">
+            <img class="card__img" src="${character.image}" alt="Picture of ${character.name}">
+            <div class="card-body">
+                <h5 class="card-title">${character.name}</h5>
+                <p class="card-text">${character.description}</p>
+                <button class="favorite-button ${character.favorite ? "favorite" : ""}">${character.favorite ? "Remove from favorites": "Add to favorites"}</button>
+            </div>
+        </div>
+    `;
+            }
+	
+	//Creates Modal 
+	function createModal(character){
+		return `
+                            <div class="modal-body">
+                                <h2 id="characterName">${character.name}</h2>
+                                <img id="${character.image}" class="img-fluid" alt="Picture of ${character.name}" />
+                                <p id="characterDescription">${character.summary}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button type="button" class="btn btn-default btn-next">
+                                    Next
+                                </button>
+                            </div>
+		`;
+	}
+
+
+            // Toggles favorite status for a character
+            async function toggleFavoriteStatus(event) {
+                if (event.target.matches(".favorite-button")) {
+                    const button = event.target;
+                    const card = button.closest(".card");
+                    const name = card.querySelector(".card-title").textContent;
+                    const favorite = button.textContent === "Add to favorites";
+
+                    const response = await fetch(`/api/characters/${name}/favorite`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ favorite }),
+                    });
+
+                    const data = await response.json();
+                    button.textContent = data.favorite ? "Remove from favorites" : "Add to favorites";
+
+                    if (data.favorite) {
+                        button.classList.add("favorite");
+                    } else {
+                        button.classList.remove("favorite");
+                    }
+                }
+            }
+		
+            // Main function
+            (async function main() {
+                try {
+                    const mainElement = document.querySelector("main");
+                    const characters = await fetchCharacters();
+
+                    for (let character of characters) {
+                        character.favorite = await fetchFavoriteStatus(character);
+                    }
+ 
+                    const characterCards = characters.map(createCharacterCard);
+                    mainElement.innerHTML = characterCards.join("");
+
+                mainElement.addEventListener("click", toggleFavoriteStatus);
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            })();
+        </script>
+    </body>
+</html>
+
