@@ -155,8 +155,45 @@ class application {
     //Returns a favorite page that includes all characters marked as favorites
     getFavoritePage() {
         const favorites = this.getFavorites();
-    
+        this.template = fs.readFileSync("./public/templates/character.html").toString();
         let pageContent = '<div id="favorites">';
+         pageContent += `
+        <div id="wrapper">
+        <header>
+            <h1>
+                Choose Your Character
+            </h1>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/favorites">
+                        Favorite(s)
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">All</a>
+                </li>
+                <li>
+                    <a href="/filter1">Pokemon</a>
+                </li>
+                <li>
+                    <a href="/filter">Not Pokemon</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+        `;
         favorites.forEach(character => {
             pageContent += `
                 <div class="card favorite-card" onclick="showCharacterDetails('${character.name}')">
@@ -171,8 +208,26 @@ class application {
         pageContent += '</div>';
     
         pageContent += '<button onclick="window.location.href=\'/\'">Return Home</button>';
-    
-        return pageContent;
+      pageContent += `
+        </main>
+            <footer>
+                Copyright &copy;Distributed Web Design 2023
+                <br/>
+                <a href="mailto:Sa12499@georgiasouthern.edu">
+                    Samuel_Adeniyi
+                </a>
+                <a href="mailto:al20877@georgiasouthern.edu">
+                    Aaron_Lee
+                </a>
+                <a href="mailto:am38948@georgiasouthern.edu">
+                    Alexander_May
+                </a>
+            </footer>
+        </div>
+        `;
+
+    this.template = this.template.replace('{{ characterCards }}', pageContent);
+        return this.template;
     }
 
     getApplicationPage() {
