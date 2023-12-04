@@ -156,6 +156,9 @@ footer {
 } 
 .favorite-card .card-title, .favorite-card .card-text {
     font-size: 2em; 
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: clip;
 }
 .favorite-card button {
     font-size: 1.5em; 
