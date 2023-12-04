@@ -71,8 +71,8 @@ class application {
             if (displayCard) {
                 pageContent += `
                     <div class="card" onclick="showCharacterDetails('${character.name}')">
-                        <img class="card__img" src="${character.image}" alt="Picture of ${character.name}">
-                        <div class="card-body">
+                        <img class="favorite-card-image" src="${character.image}" alt="Picture of ${character.name}">
+                        <div class="favorite-card-body">
                             <h5 class="card-title">${character.name}</h5>
                             <p class="card-text">${character.description}</p>
                             <button class="favorite-button ${character.isFavorite ? "favorite" : ""}" onclick="toggleFavoriteFromCard('${character.name}', event)">${character.isFavorite ? "Remove from favorites" : "Add to favorites"}</button>
@@ -155,52 +155,15 @@ class application {
     //Returns a favorite page that includes all characters marked as favorites
     getFavoritePage() {
         const favorites = this.getFavorites();
-        this.template = fs.readFileSync("./public/templates/character.html").toString();
-        let pageContent = '<div id="favorites">';
-         pageContent += `
-        <div id="wrapper">
-        <header>
-            <h1>
-                Choose Your Character
-            </h1>
-        </header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="/favorites">
-                        Favorite(s)
-                    </a>
-                </li>
-            </ul>
-        </nav>
     
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">All</a>
-                </li>
-                <li>
-                    <a href="/filter1">Pokemon</a>
-                </li>
-                <li>
-                    <a href="/filter">Not Pokemon</a>
-                </li>
-            </ul>
-        </nav>
-        <main>
-        `;
+        let pageContent = '<div id="favorites">';
         favorites.forEach(character => {
             pageContent += `
-                <div class="card-favorite-card" onclick="showCharacterDetails('${character.name}')">
-                    <img class="card__img" src="${character.image}" alt="Picture of ${character.name}">
+                <div class="favorite-card" onclick="showCharacterDetails('${character.name}')">
+                    <img class="favorite-card-image" src="${character.image}" alt="Picture of ${character.name}">
                     <div class="card-body">
-                        <h5 class="card-title">${character.name}</h5>
-                        <p class="card-text">${character.description}</p>
+                        <h5 class="favorite-card-title">${character.name}</h5>
+                        <p class="favorite-card-text">${character.description}</p>
                     </div>
                 </div>
             `;
@@ -208,26 +171,8 @@ class application {
         pageContent += '</div>';
     
         pageContent += '<button onclick="window.location.href=\'/\'">Return Home</button>';
-      pageContent += `
-        </main>
-            <footer>
-                Copyright &copy;Distributed Web Design 2023
-                <br/>
-                <a href="mailto:Sa12499@georgiasouthern.edu">
-                    Samuel_Adeniyi
-                </a>
-                <a href="mailto:al20877@georgiasouthern.edu">
-                    Aaron_Lee
-                </a>
-                <a href="mailto:am38948@georgiasouthern.edu">
-                    Alexander_May
-                </a>
-            </footer>
-        </div>
-        `;
-
-    this.template = this.template.replace('{{ characterCards }}', pageContent);
-        return this.template;
+    
+        return pageContent;
     }
 
     getApplicationPage() {
