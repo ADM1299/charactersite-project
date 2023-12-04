@@ -196,7 +196,7 @@ class application {
         `;
         favorites.forEach(character => {
             pageContent += `
-                <div class="card favorite-card" onclick="showCharacterDetails('${character.name}')">
+                <div class="card-favorite-card" onclick="showCharacterDetails('${character.name}')">
                     <img class="card__img" src="${character.image}" alt="Picture of ${character.name}">
                     <div class="card-body">
                         <h5 class="card-title">${character.name}</h5>
