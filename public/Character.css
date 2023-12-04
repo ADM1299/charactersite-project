@@ -162,6 +162,7 @@ footer {
 	vertical-align: top;
 }
 
+
 .favorite-button {
 	width: 95%;
 }
@@ -182,8 +183,8 @@ footer {
 }
 
 .favorite-card-image {
-	width: 300px;
-	height: 300px;
+	width: 100%;
+	height: auto;
 	object-fit: cover;
 }
 
