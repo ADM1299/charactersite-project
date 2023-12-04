@@ -13,7 +13,7 @@ body, html {
 }
 
 body {
-	background: url('images/Body_Background.png') no-repeat center center fixed;
+    background: url('images/Body_Background.png') no-repeat center center fixed;
     background-size: cover;
 }
 
