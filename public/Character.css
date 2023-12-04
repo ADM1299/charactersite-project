@@ -148,6 +148,19 @@ footer {
 .card:hover {
     transform: translateY(-5px);
 }
+.card-favorite-card{
+ 	border: 2px solid #333;
+ 	background-color: #fff;
+   	 box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+   	 transition: transform 0.3s ease;
+	width: calc(20% - 40px);
+	min-width: 150px;
+	margin: 20px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+
 
 .favorite-card {
 	font-size: 3em;
